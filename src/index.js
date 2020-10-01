@@ -1,9 +1,8 @@
 import React from 'react';
 import reactDOM from 'react-dom';
 import './styles/style.css'
-//import './styles/style.scss'
 
-class DrumBox extends React.Component {
+class SoundBox extends React.Component {
     constructor(props) {
       super(props);
       this.state = ({
@@ -12,6 +11,7 @@ class DrumBox extends React.Component {
        this.handleClick = this.handleClick.bind(this);
       this.handleKeyPress = this.handleKeyPress.bind(this);
     };
+    //Handles click on pads.
     handleClick = (id) => {
         document.getElementById(id).play();
          switch (id) {
@@ -56,7 +56,8 @@ class DrumBox extends React.Component {
              
        };
        };
-       
+     
+       // Initializes event listeners for key presses.
      componentDidMount() {
          document.addEventListener("keypress", this.handleKeyPress);
        };
@@ -64,7 +65,7 @@ class DrumBox extends React.Component {
        componentWillUnmount() {
          document.removeEventListener("keypress", this.handleKeyPress);
        };
-     
+     // Handles key presses.
        handleKeyPress = (event) => {
          switch (event.charCode) {
            case 113:
@@ -124,7 +125,7 @@ class DrumBox extends React.Component {
          }
         
        };
-       
+       // Renders the pads.
     render() {
         return <div id="drum-machine">
             
@@ -180,4 +181,6 @@ class DrumBox extends React.Component {
       }
     };
 
-reactDOM.render(<DrumBox />, document.getElementById('root'));
+
+    //Renders the react into the element 'root'.
+reactDOM.render(<SoundBox />, document.getElementById('root'));
